@@ -1,5 +1,4 @@
-"""
-      --------------------------------------------------------------------
+"""   --------------------------------------------------------------------
                               Echo State Networks
       --------------------------------------------------------------------
 
@@ -58,6 +57,7 @@ class ESN(object):
         'identity' :
             lambda x : x,
         }
+        
     
     def __init__(self, nr_neurons=100, prob_connect=None, spectral_radius=0.9,
                  activation='hyp.tan', leaking_rate=1,
@@ -65,7 +65,7 @@ class ESN(object):
                  alpha=1e-9, batch_size=5000, random_state=None):
         
         assert 0 < prob_connect <= 1, "`prob_connect` should be in (0,1]"
-        assert 0 <= leaking_rate <= 1, "`leaking_rate` should be in [0,1]"
+        assert 0 < leaking_rate <= 1, "`leaking_rate` should be in (0,1]"
         
         # configure the reservoir
         self.nr_neurons = nr_neurons
