@@ -87,3 +87,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+data/test_set/context--2014-04-14_2016-03-01--dmop.csv
+data/train_set/context--2008-08-22_2010-07-10--dmop.csv
+data/power-prediction-sample-2014-04-14_2016-03-01.csv
