@@ -1,4 +1,6 @@
 ## Mars Express Power Challenge ##
+<a href="https://kelvins.esa.int/mars-express-power-challenge/">
+<img align=right width="297" height="240" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mars-express-volcanoes-sm.jpg/594px-Mars-express-volcanoes-sm.jpg"></a>
 
 https://kelvins.esa.int/mars-express-power-challenge/
 
@@ -13,7 +15,7 @@ This repository contains all the work I did for the 'Mars Express Power' competi
  * [workbench.ipynb][nb]
 
 My final submission reached a RMSE of 0.089078627464354 on the [public leaderboard][public leaderboard], and later a RMSE of 0.088395630359812905 on the [final leaderboard][final leaderboard], allowing me to rank in 5th place in the competition.
-The file from that final submission is included here ([lfs_submission_5b__rebuilt.csv](lfs_submission_5b__rebuilt.csv)), and can be regenerated as well by running the code in the Jupyter Notebook.
+The file from that final submission is included here ([lfs_submission_5b__rebuilt.csv](lfs_submission_5b__rebuilt.csv)), and can be regenerated as well by running the code in the Jupyter notebook.
 
 
 ### Features ###
@@ -23,10 +25,11 @@ See my post in the official forum ([here][end_post]) for an outline of the featu
 
 ### Models ###
 
-I saw the competition as an opportunity to finally spend some time studying and implementing Echo State Networks (ESNs).
-All my modelling effort was therefore spent on getting them, and them alone, to perform as well as possible.
+I saw the competition as an opportunity to finally spend some time studying and implementing [Echo State Networks][ESN_schol] (a type of Recurrent Neural Network). All my modelling effort was therefore spent on getting the most I could out of them, and them alone.
 
-See in the Jupyter Notebook the sections on "[Parameter sweeps][ns_params]" and "[Training ensembles][ns_ensem]", for descriptions of steps taken to understand their behaviour, and to train them as accurately as possible.
+The Jupyter notebook's sections on "[Parameter sweeps][nb_params]" and "[Training ensembles][nb_ensem]" describe the steps taken to understand their behaviour, and to train them as accurately as possible.
+
+The implemented [echo_state_networks.py](echo_state_networks.py) tries to follow scikit-learn's interface and naming conventions. See the "[Parameter sweeps][nb_params]" section on the notebook for a description of its parameters.
 
 ![Test set error over a 30-days sliding window](plots/error_over_time__testset__per_month.png)
 ![Test set error in all predictions up to the current date](plots/error_over_time__testset__so_far.png)
@@ -41,7 +44,11 @@ See in the Jupyter Notebook the sections on "[Parameter sweeps][ns_params]" and 
 ### Dependencies ###
 
 The code shared here was written in Python 3 (3.4.4). It has the following dependencies:
-* numpy, scipy, matplotlib, seaborn, pandas, scikit-learn, and tqdm.
+
+ * [echo_state_networks.py](echo_state_networks.py):
+   * numpy, scipy, tqdm
+ * [workbench.ipynb][nb]:
+   * numpy, scipy, matplotlib, seaborn, pandas, scikit-learn, and tqdm
 
 
 
@@ -56,5 +63,5 @@ The code shared here was written in Python 3 (3.4.4). It has the following depen
 [CULM]: http://dx.doi.org/10.1109/MCI.2015.2405352
 
 [nb]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb
-[ns_params]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Parameter-sweep
-[ns_ensem]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Training-ensembles
+[nb_params]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Parameter-sweep
+[nb_ensem]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Training-ensembles
