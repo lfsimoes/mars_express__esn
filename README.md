@@ -57,4 +57,4 @@ The code shared here was written in Python 3 (3.4.4). It has the following depen
 
 [nb]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb
 [ns_params]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Parameter-sweep
-[ns_ensem]: nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Training-ensembles
+[ns_ensem]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Training-ensembles
