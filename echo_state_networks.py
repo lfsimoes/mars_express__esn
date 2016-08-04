@@ -64,7 +64,7 @@ class ESN(object):
                  output_feedback=False, y_noise=0.0,
                  alpha=1e-9, batch_size=5000, random_state=None):
         
-        assert 0 < prob_connect <= 1, "`prob_connect` should be in (0,1]"
+        assert 0 <= prob_connect <= 1, "`prob_connect` should be in [0,1]"
         assert 0 < leaking_rate <= 1, "`leaking_rate` should be in (0,1]"
         
         # configure the reservoir
