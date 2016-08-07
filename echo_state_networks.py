@@ -1,19 +1,22 @@
-"""   --------------------------------------------------------------------
-                              Echo State Networks
-      --------------------------------------------------------------------
+"""
+  ----------------------------------------------------------------------------
+  Echo State Networks
+  
+  Luis F. Simoes, 2016-07-29
+  ----------------------------------------------------------------------------
 
 Implemented following the specifications in:
 
-[1] http://www.scholarpedia.org/article/Echo_state_network
-
+[1] Jaeger, H. (2007). Echo state network. Scholarpedia, 2(9), 2330.
+    http://www.scholarpedia.org/article/Echo_state_network
+    
 [2] Lukosevicius, M. (2012). A practical guide to applying echo state networks.
     In Neural networks: Tricks of the trade (pp. 659-686). Springer Berlin Heidelberg.
     http://minds.jacobs-university.de/sites/default/files/uploads/papers/PracticalESN.pdf
-
-
-Luis F. Simoes
-2016-07-29
-
+    
+[3] Akusok, A., Bjork, K. M., Miche, Y., & Lendasse, A. (2015). High-performance extreme
+    learning machines: a complete toolbox for big data applications. IEEE Access, 3, 1011-1025.
+    http://dx.doi.org/10.1109/ACCESS.2015.2450498
 """
 
 
@@ -31,8 +34,8 @@ import sys
 
 class ESN(object):
     
-    # Supported activation functions, for application over reservoir neurons
-    _activation_func = {
+    # choices for activation function to be applied by reservoir neurons
+    activation_funcs = {
         'sigmoid' :
             lambda x : 1.0 / (1.0 + np.exp(-x)),        # output in: ( 0.0, 1.0)
         
@@ -59,11 +62,69 @@ class ESN(object):
         }
         
     
-    def __init__(self, nr_neurons=100, prob_connect=None, spectral_radius=0.9,
-                 activation='hyp.tan', leaking_rate=1,
+    def __init__(self, nr_neurons=100, prob_connect=0.1, spectral_radius=0.99,
+                 activation='hyp.tan', leaking_rate=1.0,
                  output_feedback=False, y_noise=0.0,
                  alpha=1e-9, batch_size=5000, random_state=None):
+        """
+        Echo State Network.
         
+        Recurrent Neural Network type. The system's inputs drive the dynamics
+        of a *randomly defined* recurrent reservoir of neurons. A linear readout
+        is trained to predict the desired outputs from the reservoir's states.
+        See: http://www.scholarpedia.org/article/Echo_state_network
+        
+        Parameters
+        ----------
+        nr_neurons : int
+            Number of neurons in the reservoir.
+        
+        prob_connect : float
+            Probability of a neuron in the reservoir receiving a recurrent connection
+            from another reservoir neuron. Configures the sparsity of reservoir connections.
+        
+        spectral_radius : float
+            Spectral radius of the reservoir's recurrent weights matrix.
+            Should be greater in tasks requiring longer memory of the input.
+            Should usually be < 1 to ensure the "Echo State Property" is present.
+        
+        activation : string (default='hyp.tan')
+            Choice of activation function to be applied by reservoir neurons, to
+            perform the nonlinear transformation of (the weighted sum of) their inputs.
+            List options with: `ESN.activation_funcs.keys()`.
+        
+        leaking_rate : float
+            Extent to which reservoir neurons' previous states vanish following a new
+            activation. Implemented as `(1 - leaking_rate) * r_prev + leaking_rate * r_activ`.
+            See: https://en.wikipedia.org/wiki/Exponential_smoothing
+        
+        output_feedback : bool
+            Indication of whether to feed the readout's predictions back into the
+            reservoir. Feedbacks enable ESNs to become pattern generators, and to
+            achieve universal computation capabilities. This power has its price,
+            however, as dynamical stability issues may arise.
+        
+        y_noise : float
+            Scaling of the noise added during training to the simulated output
+            feedback (actually originating from the training data). Emulates an
+            imperfectly learned output `y`, making the network robust to this.
+            Implemented as `y * N(1, y_noise)`. Only applicable if `output_feedback=True`.
+        
+        alpha : float
+            Regularization term used in the Tikhonov regularization (also known as
+            Ridge regression) of the readout's weights. Effectively, tunes the compromise
+            between having a small training error (`alpha=0`) and small output weights.
+            See: https://en.wikipedia.org/wiki/Tikhonov_regularization
+        
+        batch_size : int
+            Size of the chunks into which the training data is broken down.
+            Allows for trading-off memory requirements and computational overhead.
+            See Sec. III. D of http://dx.doi.org/10.1109/ACCESS.2015.2450498
+        
+        random_state : RandomState instance or None
+            If RandomState instance, random_state is the random number generator;
+            If None, the random number generator is np.random.
+        """
         assert 0 <= prob_connect <= 1, "`prob_connect` should be in [0,1]"
         assert 0 < leaking_rate <= 1, "`leaking_rate` should be in (0,1]"
         
@@ -71,7 +132,7 @@ class ESN(object):
         self.nr_neurons = nr_neurons
         self.prob_connect = prob_connect
         self._spectral_radius = spectral_radius
-        self.activation_function = self._activation_func[activation]
+        self.activation_function = self.activation_funcs[activation]
         self.leaking_rate = leaking_rate
         
         # dealing with output feedbacks
@@ -198,8 +259,8 @@ class ESN(object):
             
             # "Teacher forcing": disengages the recurrent relationship between the reservoir
             # and the readout during training. Treats output learning as a feedforward task.
-            # Feeds the desired outputs y (optionally with added noise) through the feedback
-            # connections, as if they had been the model's outputs at the previous step.
+            # Feeds the previous step's desired outputs `y` (optionally with added noise)
+            # through the feedback connections, as if they had indeed been the model's outputs.
             _y = np.vstack([y_initial, _y[:-1]])
             X = np.hstack([X, _y])
         
@@ -207,7 +268,8 @@ class ESN(object):
         H = self.propagate_reservoir(X, **kwargs)
         # get the reservoir's most recent state
         r = H[-1]
-        # extend reservoir with the input vectors
+        # extend reservoir with the input vectors (the linear readout uses as
+        # input an extended system state containing the input and reservoir states)
         H = np.hstack([X, H])
         
         # calculate the auxiliary matrices from which beta will be determined
@@ -336,10 +398,10 @@ class ESN_ensemble(object):
         
     
     def predict_with_feedback(self, X, reset_r=True, y_initial=None, **kwargs):
-        assert not self.grad_boost, \
-            "Using Gradient Boosting. Models can't all receive the same y."
         assert self.M[0].output_feedback, \
             "Trained model doesn't use y(t-1) as input."
+        assert not self.grad_boost, \
+            "Using Gradient Boosting. Models can't all receive the same y."
         
         Y = []
         
