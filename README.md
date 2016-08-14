@@ -48,7 +48,31 @@ The code shared here was written in Python 3 (3.4.4). It has the following depen
  * [echo_state_networks.py](echo_state_networks.py):
    * numpy, scipy, tqdm
  * [workbench.ipynb][nb]:
-   * numpy, scipy, matplotlib, seaborn, pandas, scikit-learn, and tqdm
+   * numpy, scipy, matplotlib, seaborn, pandas, scikit-learn, tqdm
+
+
+### Leaderboard ###
+
+Most of the competition's top ranked players/teams have shared their code. You can find below links to their repositories.
+
+| Rank | Name            | Score                | Repository |
+|:----:|:--------------- |:-------------------- |:---------- |
+| 1    | MMMe8           | 0.079163638689759466 |            |
+| 2    | redrock         | 0.080301894079712499 | [stephanos-stephani/MarsExpressChallenge][repo_2] |
+| 3    | fornaxintospace | 0.081925542258189737 |            |
+| 4    | Alex            | 0.083848704280679837 | [alex-bauer/kelvin-power-challenge][repo_4] |
+| 5    | luis            | 0.088395630359812905 | [lfsimoes/mars_express__esn][repo_5] |
+| 6    | w               | 0.088993096282001347 | [wsteitz/mars_express][repo_6] |
+| 7    | trnka           | 0.089866726592717425 | [ktrnka/mars-express][repo_7] |
+
+[repo_1]: https://?
+[repo_2]: https://github.com/stephanos-stephani/MarsExpressChallenge
+[repo_3]: https://?
+[repo_4]: https://github.com/alex-bauer/kelvin-power-challenge
+[repo_5]: https://github.com/lfsimoes/mars_express__esn
+[repo_6]: https://github.com/wsteitz/mars_express
+[repo_7]: https://github.com/ktrnka/mars-express
+
 
 
 
