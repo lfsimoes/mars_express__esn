@@ -59,7 +59,7 @@ Most of the competition's top ranked players/teams have shared their code. You c
 |:----:|:--------------- |:-------------------- |:---------- |
 | 1    | MMMe8           | 0.079163638689759466 |            |
 | 2    | redrock         | 0.080301894079712499 | [stephanos-stephani/MarsExpressChallenge][repo_2] |
-| 3    | fornaxintospace | 0.081925542258189737 |            |
+| 3    | fornaxintospace | 0.081925542258189737 | [fornaxco/Mars-Express-Challenge][repo_3] |
 | 4    | Alex            | 0.083848704280679837 | [alex-bauer/kelvin-power-challenge][repo_4] |
 | 5    | luis            | 0.088395630359812905 | [lfsimoes/mars_express__esn][repo_5] |
 | 6    | w               | 0.088993096282001347 | [wsteitz/mars_express][repo_6] |
@@ -67,7 +67,7 @@ Most of the competition's top ranked players/teams have shared their code. You c
 
 [repo_1]: https://?
 [repo_2]: https://github.com/stephanos-stephani/MarsExpressChallenge
-[repo_3]: https://?
+[repo_3]: https://github.com/fornaxco/Mars-Express-Challenge
 [repo_4]: https://github.com/alex-bauer/kelvin-power-challenge
 [repo_5]: https://github.com/lfsimoes/mars_express__esn
 [repo_6]: https://github.com/wsteitz/mars_express
