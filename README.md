@@ -2,9 +2,22 @@
 <a href="https://kelvins.esa.int/mars-express-power-challenge/">
 <img align=right width="297" height="240" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mars-express-volcanoes-sm.jpg/594px-Mars-express-volcanoes-sm.jpg"></a>
 
-https://kelvins.esa.int/mars-express-power-challenge/
+> "The [Mars Express][Mars_Express] Power Challenge focuses on the difficult problem of predicting the thermal power consumption. Three full Martian years of [Mars Express][Mars_Express] telemetry are made available and you are challenged to predict the thermal subsystem power consumption on the following Martian year."
 
-> "The Mars Express Power Challenge focuses on the difficult problem of predicting the thermal power consumption. Three full Martian years of [Mars Express][Mars_Express] telemetry are made available and you are challenged to predict the thermal subsystem power consumption on the following Martian year."
+Competition website: https://kelvins.esa.int/mars-express-power-challenge/ [[mirror][archiveorg]]. Twitter: [#MarsExpressPower][twitter].
+
+**Contents**
+
+ - [About](#about)
+ - [Features](#features)
+ - [Models](#models)
+ - [References](#references)
+ - [Dependencies](#dependencies)
+ - [Leaderboard](#leaderboard)
+ - [Publications](#publications)
+
+
+*Note:* A subset of the data used in this competition, with just one and a half (Earth) years of telemetry, can be found on [Kaggle][KaggleMEPHackathon].
 
 
 ### About ###
@@ -25,7 +38,7 @@ See my post in the official forum ([here][end_post]) for an outline of the featu
 
 ### Models ###
 
-I saw the competition as an opportunity to finally spend some time studying and implementing [Echo State Networks][ESN_schol] (a type of Recurrent Neural Network). All my modelling effort was therefore spent on getting the most I could out of them, and them alone.
+I saw the competition as an opportunity to study and implement [Echo State Networks][ESN_schol] (a type of Recurrent Neural Network). All my modelling effort was therefore spent on getting the most I could out of them, and them alone.
 
 The Jupyter notebook's sections on "[Parameter sweeps][nb_params]" and "[Training ensembles][nb_ensem]" describe the steps taken to understand their behaviour, and to train them as accurately as possible.
 
@@ -36,9 +49,9 @@ The implemented [echo_state_networks.py](echo_state_networks.py) tries to follow
 
 ### References ###
 
-1. Jaeger, H. (2007). [Echo state network][ESN_schol]. *Scholarpedia*, 2(9), 2330.
-2. Lukoševičius, M. (2012). [A practical guide to applying echo state networks][ESN_guide]. In *Neural networks: Tricks of the trade* (pp. 659-686). Springer Berlin Heidelberg.
-3. Principe, J. C., & Chen, B. (2015). [Universal approximation with convex optimization: Gimmick or reality?][CULM] *IEEE Computational Intelligence Magazine,* 10(2), 68-77.
+* Jaeger, H. (2007). [Echo state network][ESN_schol]. *Scholarpedia*, 2(9), 2330.
+* Lukoševičius, M. (2012). [A practical guide to applying echo state networks][ESN_guide]. In *Neural networks: Tricks of the trade* (pp. 659-686). Springer Berlin Heidelberg.
+* Principe, J. C., & Chen, B. (2015). [Universal approximation with convex optimization: Gimmick or reality?][CULM] *IEEE Computational Intelligence Magazine,* 10(2), 68-77.
 
 
 ### Dependencies ###
@@ -74,6 +87,13 @@ Most of the competition's top ranked players/teams have shared their code. You c
 [repo_7]: https://github.com/ktrnka/mars-express
 
 
+### Publications ###
+
+The competition led to the scientific publications listed below. The first, by the organizers, describes the problem. The second describes the winning team's approach.
+
+* Lucas, L., & Boumghar, R. (2017). [Machine Learning for Spacecraft Operations Support - The Mars Express Power Challenge][pub1]. In *2017 6th International Conference on Space Mission Challenges for Information Technology (SMC-IT)* (pp. 82-87). IEEE. [available [on ResearchGate][pub1_rg]]
+* Breskvar, M., Kocev, D., Levatic, J. *et al.* (2017). [Predicting Thermal Power Consumption of the Mars Express Satellite with Machine Learning][pub2]. In *2017 6th International Conference on Space Mission Challenges for Information Technology (SMC-IT)* (pp. 88-93). IEEE.
+
 
 
 [Mars_Express]: https://en.wikipedia.org/wiki/Mars_Express
@@ -89,3 +109,12 @@ Most of the competition's top ranked players/teams have shared their code. You c
 [nb]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb
 [nb_params]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Parameter-sweep
 [nb_ensem]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb#Training-ensembles
+
+
+[archiveorg]: https://web.archive.org/web/https://kelvins.esa.int/mars-express-power-challenge/
+[twitter]: https://twitter.com/hashtag/MarsExpressPower
+[KaggleMEPHackathon]: https://www.kaggle.com/c/mars-express-power-hackathon/
+
+[pub1]: https://doi.org/10.1109/SMC-IT.2017.21
+[pub1_rg]: https://www.researchgate.net/publication/321081233_Machine_Learning_for_Spacecraft_Operations_Support_-_The_Mars_Express_Power_Challenge
+[pub2]: https://doi.org/10.1109/SMC-IT.2017.22
