@@ -13,8 +13,8 @@ Competition website: https://kelvins.esa.int/mars-express-power-challenge/ [[mir
  - [Models](#models)
  - [References](#references)
  - [Dependencies](#dependencies)
- - [Leaderboard](#leaderboard)
- - [Publications](#publications)
+ - **[Leaderboard](#leaderboard)**
+ - **[Publications](#publications)**
 
 
 *Note:* A subset of the data used in this competition, with just one and a half (Earth) years of telemetry, can be found on [Kaggle][KaggleMEPHackathon].
@@ -64,6 +64,9 @@ The code shared here was written in Python 3 (3.4.4). It has the following depen
    * numpy, scipy, matplotlib, seaborn, pandas, scikit-learn, tqdm
 
 
+&nbsp;
+****
+
 ### Leaderboard ###
 
 Most of the competition's top ranked players/teams have shared their code. You can find below links to their repositories.
@@ -89,10 +92,11 @@ Most of the competition's top ranked players/teams have shared their code. You c
 
 ### Publications ###
 
-The competition led to the scientific publications listed below. The first, by the organizers, describes the problem. The second describes the winning team's approach.
+The competition led to the scientific publications listed below. The first, by the organizers, describes the problem. The second describes the winning team's approach. The third, again by the organizers, describes the operational model developed for the Mars Express Orbiter, based on insights gained through analysis of the different models submitted to the competition.
 
 * Lucas, L., & Boumghar, R. (2017). [Machine Learning for Spacecraft Operations Support - The Mars Express Power Challenge][pub1]. In *2017 6th International Conference on Space Mission Challenges for Information Technology (SMC-IT)* (pp. 82-87). IEEE. [available [on ResearchGate][pub1_rg]]
 * Breskvar, M., Kocev, D., Levatic, J. *et al.* (2017). [Predicting Thermal Power Consumption of the Mars Express Satellite with Machine Learning][pub2]. In *2017 6th International Conference on Space Mission Challenges for Information Technology (SMC-IT)* (pp. 88-93). IEEE.
+* Boumghar, R., Lucas, L., and Donati, A. (2018). [Machine Learning in Operations for the Mars Express Orbiter][pub3]. In *15th International Conference on Space Operations (SpaceOps 2018)*. AIAA 2018-2551.
 
 
 
@@ -118,3 +122,4 @@ The competition led to the scientific publications listed below. The first, by t
 [pub1]: https://doi.org/10.1109/SMC-IT.2017.21
 [pub1_rg]: https://www.researchgate.net/publication/321081233_Machine_Learning_for_Spacecraft_Operations_Support_-_The_Mars_Express_Power_Challenge
 [pub2]: https://doi.org/10.1109/SMC-IT.2017.22
+[pub3]: https://doi.org/10.2514/6.2018-2551
