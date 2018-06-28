@@ -50,7 +50,7 @@ The implemented [echo_state_networks.py](echo_state_networks.py) tries to follow
 ### References ###
 
 * Jaeger, H. (2007). [Echo state network][ESN_schol]. *Scholarpedia*, 2(9), 2330.
-* Lukoševičius, M. (2012). [A practical guide to applying echo state networks][ESN_guide]. In *Neural networks: Tricks of the trade* (pp. 659-686). Springer Berlin Heidelberg.
+* Lukoševičius, M. (2012). [A practical guide to applying echo state networks][ESN_guide]. In *Neural networks: Tricks of the trade* (pp. 659-686). Springer Berlin Heidelberg. [[PDF][ESN_guide_PDF]]
 * Principe, J. C., & Chen, B. (2015). [Universal approximation with convex optimization: Gimmick or reality?][CULM] *IEEE Computational Intelligence Magazine,* 10(2), 68-77.
 
 
@@ -107,7 +107,8 @@ The competition led to the scientific publications listed below. The first, by t
 [end_post]: https://kelvins.esa.int/mars-express-power-challenge/discussion/110/#c115
 
 [ESN_schol]: http://www.scholarpedia.org/article/Echo_state_network
-[ESN_guide]: http://minds.jacobs-university.de/sites/default/files/uploads/papers/PracticalESN.pdf
+[ESN_guide]: http://dx.doi.org/10.1007/978-3-642-35289-8_36
+[ESN_guide_PDF]: https://web.archive.org/web/20170810142337/http://minds.jacobs-university.de/sites/default/files/uploads/papers/PracticalESN.pdf
 [CULM]: http://dx.doi.org/10.1109/MCI.2015.2405352
 
 [nb]: http://nbviewer.jupyter.org/github/lfsimoes/mars_express__esn/blob/master/workbench.ipynb
